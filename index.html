@@ -3,839 +3,459 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>皇宸 - 欢迎大家加入我们！</title>
+    <title>皇宸科技 - 以休闲娱乐为主的综合性科技平台！</title>
     <style>
         /* 全局样式 */
+        :root {
+            --primary-color: #1a56db;
+            --secondary-color: #0e2a47;
+            --accent-color: #00b4d8;
+            --light-color: #f8fafc;
+            --dark-color: #1e293b;
+            --text-color: #334155;
+        }
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
-        :root {
-            --primary-color: #8e2de2; /* 紫色 */
-            --secondary-color: #4a00e0; /* 深紫色 */
-            --accent-color: #e94057; /* 红色 */
-            --dark-color: #1a1a2e;
-            --light-color: #f8f9fa;
-            --gradient-bg: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-        }
-
+        
         body {
-            background-color: var(--light-color);
-            color: var(--dark-color);
+            color: var(--text-color);
             line-height: 1.6;
             overflow-x: hidden;
         }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        ul {
-            list-style: none;
-        }
-
+        
         .container {
+            width: 90%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
         }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 24px;
-            background: var(--gradient-bg);
-            color: white;
-            border: none;
-            border-radius: 30px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(142, 45, 226, 0.4);
+        
+        section {
+            padding: 80px 0;
         }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(142, 45, 226, 0.6);
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
         }
-
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: var(--accent-color);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
         /* 导航栏 */
         header {
-            background-color: rgba(26, 26, 46, 0.9);
             position: fixed;
-            width: 100%;
             top: 0;
+            left: 0;
+            width: 100%;
             z-index: 1000;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
         }
-
-        nav {
+        
+        .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 20px 0;
         }
-
+        
         .logo {
-            display: flex;
-            align-items: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
         }
-
-        .logo img {
-            height: 40px;
-            margin-right: 10px;
-        }
-
-        .logo h1 {
-            color: white;
-            font-size: 24px;
-            font-weight: bold;
-            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
+        
         .nav-links {
             display: flex;
+            list-style: none;
         }
-
+        
         .nav-links li {
             margin-left: 30px;
         }
-
+        
         .nav-links a {
-            color: white;
+            text-decoration: none;
+            color: var(--dark-color);
             font-weight: 500;
-            position: relative;
-            padding: 5px 0;
+            transition: color 0.3s;
         }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gradient-bg);
-            transition: width 0.3s ease;
+        
+        .nav-links a:hover {
+            color: var(--primary-color);
         }
-
-        .nav-links a:hover::after {
-            width: 100%;
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
         }
-
+        
         /* 英雄区域 */
         .hero {
             height: 100vh;
-            background: var(--gradient-bg);
+            background: linear-gradient(rgba(14, 42, 71, 0.8), rgba(14, 42, 71, 0.9)), url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
             display: flex;
             align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
-            opacity: 0.2;
-            z-index: 0;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
             color: white;
+            text-align: center;
+        }
+        
+        .hero-content {
             max-width: 800px;
+            margin: 0 auto;
         }
-
-        .hero h2 {
-            font-size: 48px;
+        
+        .hero h1 {
+            font-size: 3.5rem;
             margin-bottom: 20px;
-            font-weight: 800;
+            animation: fadeInUp 1s ease;
         }
-
+        
         .hero p {
-            font-size: 20px;
+            font-size: 1.2rem;
             margin-bottom: 30px;
-            max-width: 600px;
+            animation: fadeInUp 1s ease 0.3s both;
         }
-
-        .hero-buttons {
-            display: flex;
-            gap: 20px;
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
         }
-
-        .btn-secondary {
-            background: transparent;
-            border: 2px solid white;
+        
+        .btn:hover {
+            background: #0096c7;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
-
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
-
+        
         /* 关于我们 */
         .about {
-            padding: 100px 0;
-            background-color: white;
+            background: var(--light-color);
         }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-title h2 {
-            font-size: 36px;
-            color: var(--dark-color);
-            position: relative;
-            display: inline-block;
-            padding-bottom: 15px;
-        }
-
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: var(--gradient-bg);
-        }
-
+        
         .about-content {
             display: flex;
             align-items: center;
             gap: 50px;
         }
-
+        
+        .about-text {
+            flex: 1;
+        }
+        
         .about-image {
             flex: 1;
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
-
+        
         .about-image img {
             width: 100%;
             height: auto;
-            transition: transform 0.5s ease;
+            display: block;
+            transition: transform 0.5s;
         }
-
+        
         .about-image:hover img {
             transform: scale(1.05);
         }
-
-        .about-text {
-            flex: 1;
+        
+        /* 部门展示 */
+        .departments {
+            background: white;
         }
-
-        .about-text h3 {
-            font-size: 28px;
-            margin-bottom: 20px;
-            color: var(--primary-color);
-        }
-
-        .about-text p {
-            margin-bottom: 20px;
-            color: #555;
-        }
-
-        /* 最新动态 */
-        .news {
-            padding: 100px 0;
-            background-color: #f9f9f9;
-        }
-
-        .news-grid {
+        
+        .department-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
         }
-
+        
+        .department-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+        
+        .department-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .department-icon {
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary-color);
+            color: white;
+            font-size: 3rem;
+        }
+        
+        .department-content {
+            padding: 25px;
+        }
+        
+        .department-content h3 {
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+        
+        /* 新闻动态 */
+        .news {
+            background: var(--light-color);
+        }
+        
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
         .news-card {
             background: white;
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
-
-        .news-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-
+        
         .news-image {
             height: 200px;
             overflow: hidden;
         }
-
+        
         .news-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            transition: transform 0.5s;
         }
-
+        
         .news-card:hover .news-image img {
             transform: scale(1.1);
         }
-
-        .news-info {
+        
+        .news-content {
             padding: 20px;
         }
-
-        .news-info h3 {
-            font-size: 20px;
-            margin-bottom: 10px;
-            color: var(--primary-color);
-        }
-
-        .news-info .news-date {
-            color: #888;
-            font-size: 14px;
-            margin-bottom: 10px;
-            display: block;
-        }
-
-        .news-info p {
-            color: #666;
-            margin-bottom: 15px;
-        }
-
-        /* 团队风采 */
-        .team-style {
-            padding: 100px 0;
-            background-color: white;
-        }
-
-        .team-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .gallery-item {
-            border-radius: 10px;
-            overflow: hidden;
-            height: 250px;
-            position: relative;
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.1);
-        }
-
-        .gallery-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(0, 0, 0, 0.7);
-            color: white;
-            padding: 15px;
-            transform: translateY(100%);
-            transition: transform 0.3s ease;
-        }
-
-        .gallery-item:hover .gallery-overlay {
-            transform: translateY(0);
-        }
-
-        /* 团队成员 */
-        .team-members {
-            padding: 100px 0;
-            background-color: #f9f9f9;
-        }
-
-        .members-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 30px;
-        }
-
-        .member-card {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-
-        .member-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .member-image {
-            height: 250px;
-            overflow: hidden;
-        }
-
-        .member-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .member-info {
-            padding: 20px;
-        }
-
-        .member-info h3 {
-            font-size: 20px;
-            margin-bottom: 5px;
-            color: var(--dark-color);
-        }
-
-        .member-info .role {
-            color: var(--primary-color);
-            font-weight: 500;
-            margin-bottom: 15px;
-            display: block;
-        }
-
-        .member-info p {
-            color: #666;
-            margin-bottom: 15px;
-        }
-
-        /* 分支机构 */
-        .branches {
-            padding: 100px 0;
-            background-color: white;
-        }
-
-        .branches-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .branch-card {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .branch-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .branch-header {
-            background: var(--gradient-bg);
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .branch-header h3 {
-            font-size: 22px;
-        }
-
-        .branch-content {
-            padding: 20px;
-        }
-
-        .branch-content p {
-            margin-bottom: 15px;
-            color: #555;
-        }
-
-        .branch-content .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .branch-content .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .branch-content .contact-item i {
-            color: var(--primary-color);
-        }
-
-        /* 发展历程 */
-        .history {
-            padding: 100px 0;
-            background-color: #f9f9f9;
-        }
-
-        .timeline {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .timeline::after {
-            content: '';
-            position: absolute;
-            width: 4px;
-            background-color: var(--primary-color);
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            margin-left: -2px;
-        }
-
-        .timeline-item {
-            padding: 10px 40px;
-            position: relative;
-            width: 50%;
-            box-sizing: border-box;
-        }
-
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: white;
-            border: 4px solid var(--accent-color);
-            border-radius: 50%;
-            top: 15px;
-            z-index: 1;
-        }
-
-        .left {
-            left: 0;
-        }
-
-        .right {
-            left: 50%;
-        }
-
-        .left::after {
-            right: -10px;
-        }
-
-        .right::after {
-            left: -10px;
-        }
-
-        .timeline-content {
-            padding: 20px;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .timeline-content h3 {
-            color: var(--primary-color);
-            margin-bottom: 10px;
-        }
-
-        .timeline-content .year {
-            font-weight: bold;
+        
+        .news-date {
             color: var(--accent-color);
+            font-size: 0.9rem;
             margin-bottom: 10px;
-            display: block;
         }
-
-        /* 作品展示 */
-        .works {
-            padding: 100px 0;
-            background-color: white;
-        }
-
-        .works-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .work-card {
+        
+        /* 联系我们 */
+        .contact {
             background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-
-        .work-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        .work-image {
-            height: 200px;
-            overflow: hidden;
-        }
-
-        .work-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .work-card:hover .work-image img {
-            transform: scale(1.1);
-        }
-
-        .work-info {
-            padding: 20px;
-        }
-
-        .work-info h3 {
-            font-size: 20px;
-            margin-bottom: 10px;
-            color: var(--primary-color);
-        }
-
-        .work-info p {
-            color: #666;
-            margin-bottom: 15px;
-        }
-
-        .work-tags {
+        
+        .contact-content {
             display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 15px;
+            gap: 50px;
         }
-
-        .tag {
-            background: #f0f0f0;
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 12px;
-            color: #666;
-        }
-
-        /* 活动日历 */
-        .events {
-            padding: 100px 0;
-            background-color: #f9f9f9;
-        }
-
-        .event-list {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .event-card {
-            display: flex;
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease;
-        }
-
-        .event-card:hover {
-            transform: translateX(10px);
-        }
-
-        .event-date {
-            min-width: 100px;
-            background: var(--gradient-bg);
-            color: white;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .event-date .day {
-            font-size: 32px;
-            font-weight: bold;
-        }
-
-        .event-date .month {
-            font-size: 16px;
-        }
-
-        .event-info {
-            padding: 20px;
+        
+        .contact-info {
             flex: 1;
         }
-
-        .event-info h3 {
-            font-size: 20px;
-            margin-bottom: 10px;
-            color: var(--dark-color);
+        
+        .contact-form {
+            flex: 1;
         }
-
-        .event-info p {
-            color: #666;
-            margin-bottom: 15px;
-        }
-
-        .event-info .event-meta {
+        
+        .info-item {
             display: flex;
-            gap: 20px;
-            color: #888;
-            font-size: 14px;
+            align-items: flex-start;
+            margin-bottom: 25px;
         }
-
-        .event-info .event-meta span {
+        
+        .info-icon {
+            background: var(--primary-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
         }
-
-        .event-info .event-meta i {
-            margin-right: 5px;
+        
+        .form-group {
+            margin-bottom: 20px;
         }
-
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: border 0.3s;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
         /* 页脚 */
         footer {
-            background-color: var(--dark-color);
+            background: var(--secondary-color);
             color: white;
-            padding: 50px 0 20px;
+            padding: 60px 0 20px;
         }
-
+        
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
+            gap: 40px;
             margin-bottom: 40px;
         }
-
+        
         .footer-column h3 {
-            font-size: 18px;
+            font-size: 1.2rem;
             margin-bottom: 20px;
             position: relative;
             padding-bottom: 10px;
         }
-
+        
         .footer-column h3::after {
             content: '';
             position: absolute;
-            bottom: 0;
             left: 0;
+            bottom: 0;
             width: 40px;
             height: 2px;
-            background: var(--gradient-bg);
+            background: var(--accent-color);
         }
-
-        .footer-column ul li {
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
             margin-bottom: 10px;
         }
-
-        .footer-column ul li a {
-            color: #aaa;
-            transition: color 0.3s ease;
+        
+        .footer-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: color 0.3s;
         }
-
-        .footer-column ul li a:hover {
-            color: var(--gradient-bg);
+        
+        .footer-links a:hover {
+            color: white;
         }
-
-        .footer-bottom {
+        
+        .copyright {
             text-align: center;
             padding-top: 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #aaa;
-            font-size: 14px;
+            font-size: 0.9rem;
+            color: #94a3b8;
         }
-
-        /* 响应式设计 */
-        @media (max-width: 992px) {
-            .about-content {
-                flex-direction: column;
-            }
-            
-            .hero h2 {
-                font-size: 36px;
-            }
-            
-            .hero p {
-                font-size: 18px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .hero-buttons {
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            .event-card {
-                flex-direction: column;
-            }
-            
-            .event-date {
-                padding: 15px;
-                min-width: 100%;
-            }
-            
-            .timeline::after {
-                left: 31px;
-            }
-            
-            .timeline-item {
-                width: 100%;
-                padding-left: 70px;
-                padding-right: 25px;
-            }
-            
-            .timeline-item::after {
-                left: 21px;
-            }
-            
-            .right {
-                left: 0;
-            }
-        }
-
-        /* 动画效果 */
-        @keyframes fadeIn {
+        
+        /* 动画 */
+        @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(30px);
             }
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
-
-        .fade-in {
-            animation: fadeIn 1s ease forwards;
-            opacity: 0;
+        
+        /* 响应式设计 */
+        @media (max-width: 992px) {
+            .about-content,
+            .contact-content {
+                flex-direction: column;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
         }
-
-        .delay-1 {
-            animation-delay: 0.2s;
-        }
-
-        .delay-2 {
-            animation-delay: 0.4s;
-        }
-
-        .delay-3 {
-            animation-delay: 0.6s;
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: white;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 50px;
+                transition: left 0.3s;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
         }
     </style>
 </head>
@@ -843,396 +463,354 @@
     <!-- 导航栏 -->
     <header>
         <div class="container">
-            <nav>
-                <div class="logo">
-                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0id2hpdGUiPjxwYXRoIGQ9Ik0xMiAyQzYuNDggMiAyIDYuNDggMiAxMnM0LjQ4IDEwIDEwIDEwIDEwLTQuNDggMTAtMTBTMTcuNTIgMiAxMiAyem0wIDE4Yy00LjQxIDAtOC0zLjU5LTgtOHMzLjU5LTggOC04IDggMy41OSA4IDgtMy41OSA4LTggOHptMy41LTljLjgzIDAgMS41LS42NyAxLjUtMS41UzE2LjMzIDggMTUuNSA4IDE0IDguNjcgMTQgOC41IDE0LjUgOSAxNS41IDkgMTVzLjY3IDEuNSAxLjUgMS41em0tNyAwYy44MyAwIDEuNS0uNjcgMS41LTEuNVM5LjMzIDggOC41IDggOCA4LjY3IDggOC41IDggOSA4LjUgOSAxNS41IDkgMTVzLjY3IDEuNSAxLjUgMS41eiIvPjwvc3ZnPg==" alt="Logo">
-                    <h1>御音阁</h1>
-                </div>
+            <nav class="navbar">
+                <a href="#" class="logo">皇宸科技</a>
                 <ul class="nav-links">
-                    <li><a href="index.html">首页</a></li>
-                    <li><a href="about.html">关于我们</a></li>
-                    <li><a href="index.html#news">最新动态</a></li>
-                    <li><a href="recruitment.html">招新公告</a></li>
-                    <li><a href="members.html">成员查询</a></li>
-                    <li><a href="index.html#works">作品展示</a></li>
-                    <li><a href="index.html#events">活动日历</a></li>
-                    <li><a href="index.html#contact">联系我们</a></li>
+                    <li><a href="#home">首页</a></li>
+                    <li><a href="#about">关于我们</a></li>
+                    <li><a href="#departments">部门介绍</a></li>
+                    <li><a href="#news">新闻动态</a></li>
+                    <li><a href="#contact">联系我们</a></li>
                 </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </nav>
         </div>
     </header>
 
     <!-- 英雄区域 -->
-    <section id="home" class="hero">
+    <section class="hero" id="home">
         <div class="container">
             <div class="hero-content">
-                <h2 class="fade-in">用声音传递情感，用音色塑造世界</h2>
-                <p class="fade-in delay-1">御音阁，专注于Pia戏配音的专业社团，致力于为每部作品注入灵魂，让声音成为艺术的桥梁。</p>
-                <div class="hero-buttons fade-in delay-2">
-                    <a href="#works" class="btn">推荐作品</a>
-                    <a href="#news" class="btn btn-secondary">最新动态</a>
-                </div>
+                <h1>引领科技创新，驱动未来发展</h1>
+                <p>皇宸科技是一家综合性科技公司，专注于为各行业提供创新的技术解决方案和优质的服务体验。</p>
+                <a href="#about" class="btn">了解更多</a>
             </div>
         </div>
     </section>
 
     <!-- 关于我们 -->
-    <section id="about" class="about">
+    <section class="about" id="about">
         <div class="container">
             <div class="section-title">
-                <h2>关于我们</h2>
+                <h2>关于皇宸科技</h2>
+                <p>致力于成为行业领先的综合性科技平台</p>
             </div>
             <div class="about-content">
-                <div class="about-image">
-                    <img src=".\assets\img\gywm.png" alt="关于我们">
-                </div>
                 <div class="about-text">
-                    <h3>御音阁：声音的艺术殿堂</h3>
-                    <p>御音阁成立于2023年，是一个专注于Pia戏配音的专业社团 。我们聚集了一群热爱配音艺术的年轻人，通过专业的训练和实践，为各类作品注入生命力。</p>
-                    <p>我们的成员来自全国各地，拥有不同的专业背景，但都怀揣着对声音艺术的热爱。无论是古风、现代还是科幻题材，我们都能用声音完美诠释角色的灵魂。</p>
-                    <p>多年来，御音阁已经完成了超过100部作品的配音，获得了业内外的一致好评。我们相信，好的配音不仅仅是模仿，更是对角色的二次创作。</p>
-                    <a href="about.html" class="btn">了解更多</a>
+                    <h3>我们的使命与愿景</h3>
+                    <p>皇宸科技成立于2015年，是一家专注于科技创新与服务的综合性企业。我们以"技术驱动未来"为核心理念，致力于为客户提供全方位的技术解决方案和优质的服务体验。</p>
+                    <p>公司拥有专业的技术团队和丰富的行业经验，在多个领域取得了显著成就。我们始终坚持以客户需求为导向，以技术创新为动力，不断推动行业发展和社会进步。</p>
+                    <p>未来，皇宸科技将继续深耕科技创新领域，拓展业务边界，为构建更加智能、便捷的数字世界贡献力量。</p>
+                    <a href="#contact" class="btn" style="margin-top: 20px;">联系我们</a>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="皇宸科技办公室">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 活动日历 -->
-    <section id="events" class="events">
+    <!-- 部门介绍 -->
+    <section class="departments" id="departments">
         <div class="container">
             <div class="section-title">
-                <h2>活动日历</h2>
+                <h2>我们的部门</h2>
+                <p>专业团队，分工协作，共创价值</p>
             </div>
-            <div class="event-list">
-                <div class="event-card">
-                    <div class="event-date">
-                        <span class="day">01</span>
-                        <span class="month">三月</span>
+            <div class="department-grid">
+                <div class="department-card">
+                    <div class="department-icon">
+                        <i class="fas fa-cogs"></i>
                     </div>
-                    <div class="event-info">
-                        <h3>《御音阁》社团招新</h3>
-                        <p>《御音阁》欢迎大家加入我们，长期纳新，不拒新！</p>
-                        <div class="event-meta">
-						    <span><i>⏰</i> 每天 不定时</span>
-                            <span><a href="https://yyg.ihcking.com/recruitment.html">📍 线上平台</a></span>
-                        </div>
+                    <div class="department-content">
+                        <h3>管理部</h3>
+                        <p>负责公司整体战略规划、资源配置和决策执行，确保公司高效运营和持续发展。</p>
                     </div>
                 </div>
-                <div class="event-card">
-                    <div class="event-date">
-                        <span class="day">01</span>
-                        <span class="month">三月</span>
+                <div class="department-card">
+                    <div class="department-icon">
+                        <i class="fas fa-users"></i>
                     </div>
-                    <div class="event-info">
-                        <h3>《御音阁》社团活动</h3>
-                        <p>《御音阁》社团成员一起聊天，走本，交流！</p>
-                        <div class="event-meta">
-						    <span><i>⏰</i> 每天晚上 19:00-23:00</span>
-                            <span><a href="https://yyg.ihcking.com/recruitment.html">📍 线上平台</a></span>
-                        </div>
+                    <div class="department-content">
+                        <h3>人事部</h3>
+                        <p>负责人才招聘、培训发展、绩效管理和员工关系，打造高素质专业团队。</p>
                     </div>
                 </div>
-                <div class="event-card">
-                    <div class="event-date">
-                        <span class="day">01</span>
-                        <span class="month">三月</span>
+                <div class="department-card">
+                    <div class="department-icon">
+                        <i class="fas fa-film"></i>
                     </div>
-                    <div class="event-info">
-                        <h3>《御音阁》社团创作</h3>
-                        <p>《御音阁》社团成员一起创作，完善社团剧本！</p>
-                        <div class="event-meta">
-						    <span><i>⏰</i> 每周六晚 20:00-22:00</span>
-                            <span><a href="https://yyg.ihcking.com/recruitment.html">📍 线上平台</a></span>
-                        </div>
+                    <div class="department-content">
+                        <h3>媒体部</h3>
+                        <p>负责品牌宣传、内容创作、媒体关系维护和数字营销，提升公司品牌影响力。</p>
+                    </div>
+                </div>
+                <div class="department-card">
+                    <div class="department-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <div class="department-content">
+                        <h3>策划部</h3>
+                        <p>负责项目策划、创意设计和方案制定，为客户提供创新的解决方案。</p>
+                    </div>
+                </div>
+                <div class="department-card">
+                    <div class="department-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="department-content">
+                        <h3>市场部</h3>
+                        <p>负责市场调研、营销策略制定和客户关系管理，拓展业务市场份额。</p>
+                    </div>
+                </div>
+                <div class="department-card">
+                    <div class="department-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <div class="department-content">
+                        <h3>运营部</h3>
+                        <p>负责产品运营、用户体验优化和数据分析，确保产品和服务高效运行。</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 作品展示 -->
-    <section id="works" class="works">
+    <!-- 新闻动态 -->
+    <section class="news" id="news">
         <div class="container">
             <div class="section-title">
-                <h2>作品展示</h2>
-            </div>
-            <div class="works-grid">
-                <div class="work-card">
-                    <div class="work-image">
-                        <img src=".\assets\img\御音阁招新.png" alt="作品1">
-                    </div>
-                    <div class="work-info">
-                        <h3>【御音阁】新人引导本</h3>
-                        <p>新人引导本，欢迎大家使用！</p>
-                        <div class="work-tags">
-                            <span class="tag">御音阁</span>
-                            <span class="tag">社团</span>
-                            <span class="tag">新人</span>
-                        </div>
-                        <a href="https://www.aipiaxi.com/article-detail/245425" class="btn">查看详情</a>
-                    </div>
-                </div>
-                <div class="work-card">
-                    <div class="work-image">
-                        <img src=".\assets\img\gywm.png" alt="作品2">
-                    </div>
-                    <div class="work-info">
-                        <h3>【御音阁】萌新Pia戏本</h3>
-                        <p>萌新Pia戏本，欢迎大家使用！</p>
-                        <div class="work-tags">
-                            <span class="tag">御音阁</span>
-                            <span class="tag">社团</span>
-                            <span class="tag">萌新</span>
-                        </div>
-                        <a href="https://www.aipiaxi.com/article-detail/502703" class="btn">查看详情</a>
-                    </div>
-                </div>
-                <div class="work-card">
-                    <div class="work-image">
-                        <img src=".\assets\img\粘人精的自我修养.png" alt="作品3">
-                    </div>
-                    <div class="work-info">
-                        <h3>【甜蜜系】黏人精的自我修养</h3>
-                        <p>甜蜜系情感语录，欢迎大家使用！</p>
-                        <div class="work-tags">
-                            <span class="tag">语录</span>
-                            <span class="tag">情感</span>
-                            <span class="tag">电台稿</span>
-                        </div>
-                        <a href="https://www.aipiaxi.com/article-detail/130056" class="btn">查看详情</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-	
-    <!-- 最新动态 -->
-    <section id="news" class="news">
-        <div class="container">
-            <div class="section-title">
-                <h2>最新动态</h2>
+                <h2>新闻动态</h2>
+                <p>了解皇宸科技最新资讯和行业动态</p>
             </div>
             <div class="news-grid">
                 <div class="news-card">
                     <div class="news-image">
-                        <img src=".\assets\img\gywm.png" alt="动态1">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="新闻图片">
                     </div>
-                    <div class="news-info">
-                        <span class="news-date">2023年6月15日</span>
-                        <h3>《御音阁》社团正式成立</h3>
-                        <p>感谢所有成员的辛勤付出！未来将带来更多优质作品。</p>
-                        <a href="#" class="btn">查看详情</a>
-                    </div>
-                </div>
-                <div class="news-card">
-                    <div class="news-image">
-                        <img src=".\assets\img\gywm.png" alt="动态2">
-                    </div>
-                    <div class="news-info">
-                        <span class="news-date">2023年5月22日</span>
-                        <h3>御音阁与知名音频平台达成合作</h3>
-                        <p>我们很高兴地宣布，御音阁已与国内知名音频平台达成战略合作。</p>
-                        <a href="#" class="btn">查看详情</a>
+                    <div class="news-content">
+                        <div class="news-date">2023年10月15日</div>
+                        <h3>皇宸科技荣获"年度创新企业"奖项</h3>
+                        <p>在2023年科技创新峰会上，皇宸科技凭借卓越的技术创新能力和行业影响力，荣获"年度创新企业"奖项。</p>
                     </div>
                 </div>
                 <div class="news-card">
                     <div class="news-image">
-                        <img src=".\assets\img\gywm.png" alt="动态3">
+                        <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="新闻图片">
                     </div>
-                    <div class="news-info">
-                        <span class="news-date">2023年4月10日</span>
-                        <h3>御音阁暑期训练营报名开始</h3>
-                        <p>2023年御音阁暑期配音训练营开始报名啦！欢迎加入我们！</p>
-                        <a href="#" class="btn">查看详情</a>
+                    <div class="news-content">
+                        <div class="news-date">2023年9月28日</div>
+                        <h3>皇宸科技与知名高校建立战略合作</h3>
+                        <p>公司与多所知名高校签署战略合作协议，共同推进科技创新和人才培养，助力产学研深度融合。</p>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <div class="news-image">
+                        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="新闻图片">
+                    </div>
+                    <div class="news-content">
+                        <div class="news-date">2023年8月10日</div>
+                        <h3>皇宸科技发布新一代智能解决方案</h3>
+                        <p>公司正式发布新一代智能解决方案，该方案融合AI和大数据技术，为客户提供更高效、智能的服务体验。</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 团队风采 -->
-    <section id="team-style" class="team-style">
+    <!-- 联系我们 -->
+    <section class="contact" id="contact">
         <div class="container">
             <div class="section-title">
-                <h2>团队风采</h2>
+                <h2>联系我们</h2>
+                <p>期待与您合作，共创美好未来</p>
             </div>
-            <div class="team-gallery">
-                <div class="gallery-item">
-                    <img src=".\assets\img\gywm.png" alt="团队照片1">
-                    <div class="gallery-overlay">
-                        <h3>2023年春季团建活动</h3>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h3>公司地址</h3>
+                            <p>北京市朝阳区科技园区创新大厦15层</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h3>联系电话</h3>
+                            <p>+86 10 1234 5678</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h3>电子邮箱</h3>
+                            <p>info@huangchen-tech.com</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div>
+                            <h3>工作时间</h3>
+                            <p>周一至周五: 9:00 - 18:00</p>
+                        </div>
                     </div>
                 </div>
-                <div class="gallery-item">
-                    <img src=".\assets\img\gywm.png" alt="团队照片2">
-                    <div class="gallery-overlay">
-                        <h3>录音室工作花絮</h3>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src=".\assets\img\gywm.png" alt="团队照片3">
-                    <div class="gallery-overlay">
-                        <h3>年度颁奖典礼</h3>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src=".\assets\img\gywm.png" alt="团队照片4">
-                    <div class="gallery-overlay">
-                        <h3>配音工作坊</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 团队成员 -->
-    <section id="team-members" class="team-members">
-        <div class="container">
-            <div class="section-title">
-                <h2>团队成员</h2>
-            </div>
-            <div class="members-grid">
-                <div class="member-card">
-                    <div class="member-image">
-                        <img src=".\assets\img\gywm.png" alt="成员1">
-                    </div>
-                    <div class="member-info">
-                        <h3>泠枫</h3>
-                        <span class="role">团长 / 配音导演</span>
-                        <p>拥有二年配音经验，擅长古风和现代题材，曾为多部知名作品担任配音导演。</p>
-                    </div>
-                </div>
-                <div class="member-card">
-                    <div class="member-image">
-                        <img src=".\assets\img\gywm.png" alt="成员2">
-                    </div>
-                    <div class="member-info">
-                        <h3>苏瑶</h3>
-                        <span class="role">副团长 / 主配音演员</span>
-                        <p>声音甜美多变，擅长塑造女性角色，尤其在古风题材中有出色表现。</p>
-                    </div>
-                </div>
-                <div class="member-card">
-                    <div class="member-image">
-                        <img src=".\assets\img\gywm.png" alt="成员3">
-                    </div>
-                    <div class="member-info">
-                        <h3>陈子墨</h3>
-                        <span class="role">主配音演员</span>
-                        <p>声音低沉浑厚，擅长塑造男性角色，尤其在悬疑和科幻题材中有出色表现。</p>
-                    </div>
-                </div>
-                <div class="member-card">
-                    <div class="member-image">
-                        <img src=".\assets\img\gywm.png" alt="成员4">
-                    </div>
-                    <div class="member-info">
-                        <h3>白浅浅</h3>
-                        <span class="role">剧本编辑</span>
-                        <p>文学功底深厚，负责剧本的改编和优化，为作品注入更多文学魅力。</p>
-                    </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="您的姓名" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="电子邮箱" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="主题" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" placeholder="留言内容" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">发送消息</button>
+                    </form>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- 页脚 -->
-    <footer id="contact">
+    <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
-                    <h3>御音阁</h3>
-                    <ul>
-                    <li><a href="index.html">首页</a></li>
-                    <li><a href="about.html">关于我们</a></li>
-                    <li><a href="index.html#news">最新动态</a></li>
-                    <li><a href="recruitment.html">招新公告</a></li>
-                    <li><a href="members.html">成员查询</a></li>
-                    <li><a href="index.html#works">作品展示</a></li>
-                    <li><a href="index.html#events">活动日历</a></li>
-                    <li><a href="index.html#contact">联系我们</a></li>
+                    <h3>皇宸科技</h3>
+                    <p>引领科技创新，驱动未来发展。我们致力于为各行业提供创新的技术解决方案和优质的服务体验。</p>
+                </div>
+                <div class="footer-column">
+                    <h3>快速链接</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">首页</a></li>
+                        <li><a href="#about">关于我们</a></li>
+                        <li><a href="#departments">部门介绍</a></li>
+                        <li><a href="#news">新闻动态</a></li>
+                        <li><a href="#contact">联系我们</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
-                    <h3>友链</h3>
-                    <ul>
-                        <li><a href="#">皇宸总部</a></li>
-                        <li><a href="#">皇宸部落</a></li>
-                        <li><a href="#">乾龙公会</a></li>
-                        <li><a href="#">卿城家族</a></li>
-                        <li><a href="#">枫谷师门</a></li>
-						<li><a href="#">潇府</a></li>
-                        <li><a href="#">逸阁</a></li>
-                        <li><a href="#">卿阁</a></li>
-                        <li><a href="#">枫阁</a></li>
+                    <h3>部门</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">管理部</a></li>
+                        <li><a href="#">人事部</a></li>
+                        <li><a href="#">媒体部</a></li>
+                        <li><a href="#">策划部</a></li>
+                        <li><a href="#">市场部</a></li>
+                        <li><a href="#">运营部</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h3>联系我们</h3>
-                    <ul>
-                        <li><a href="#">🐧 3010662388</a></li>
-                        <li><a href="#">📧 hc@ihcking.com</a></li>
-                        <li><a href="https://yyg.ihcking.com/">📍 御音阁官网</a></li>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> 北京市朝阳区科技园区创新大厦15层</li>
+                        <li><i class="fas fa-phone"></i> +86 10 1234 5678</li>
+                        <li><i class="fas fa-envelope"></i> info@huangchen-tech.com</li>
                     </ul>
                 </div>
-                <div class="footer-column">
-                    <h3>关注我们</h3>
-                    <div class="social-links">
-                        <a href="#"><i>微</i></a>
-                        <a href="#"><i>博</i></a>
-                        <a href="#"><i>抖</i></a>
-                        <a href="#"><i>B</i></a>
-                    </div>
-                </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2023 御音阁配音社团. 保留所有权利.</p>
+            <div class="copyright">
+                <p>&copy; 2023 皇宸科技 版权所有</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // 滚动动画
-        document.addEventListener('DOMContentLoaded', function() {
-            const fadeElements = document.querySelectorAll('.fade-in');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = 1;
-                    }
-                });
-            }, {
-                threshold: 0.1
-            });
-            
-            fadeElements.forEach(element => {
-                observer.observe(element);
-            });
-            
-            // 平滑滚动
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            }
+        });
+
+        // 移动端菜单切换
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
                         behavior: 'smooth'
                     });
-                });
-            });
-            
-            // 导航栏滚动效果
-            window.addEventListener('scroll', function() {
-                const header = document.querySelector('header');
-                if (window.scrollY > 50) {
-                    header.style.backgroundColor = 'rgba(26, 26, 46, 0.95)';
-                    header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.2)';
-                } else {
-                    header.style.backgroundColor = 'rgba(26, 26, 46, 0.9)';
-                    header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+                    
+                    // 移动端点击后关闭菜单
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        hamburger.classList.remove('active');
+                    }
                 }
             });
         });
+
+        // 表单提交
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('感谢您的留言！我们会尽快与您联系。');
+            this.reset();
+        });
+
+        // 滚动动画
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // 观察需要动画的元素
+        document.querySelectorAll('.department-card, .news-card, .about-content, .contact-content').forEach(el => {
+            el.style.opacity = 0;
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(el);
+        });
     </script>
+    
+    <!-- Font Awesome 图标库 -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 </html>
